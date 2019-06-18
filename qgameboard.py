@@ -14,23 +14,17 @@ class QGameBoard(QWidget):
         self.resize(QSize(1000, 1000))
 
         self.mainLayout = QVBoxLayout()
-        self.setLayout(self.mainLayout)
+        self.boardLayout = QGridLayout()
+        # self.tiles = list()
+        # self.score = QLabel()
 
+        self.setLayout(self.mainLayout)
         self.game = Game(4)
 
-        # self.boardLayout = QGridLayout()
-        # self.tiles = [[None for x in range(self.game.board.dimension)] for y in range(self.game.board.dimension)]
-        # for i in range(self.game.board.dimension):
-        #     for j in range(self.game.board.dimension):
-        #         self.tiles[i][j] = QTile(self.game.board.board[i][j])
-        #         self.boardLayout.addWidget(self.tiles[i][j], i, j)
-        #         self.tiles[i][j].draw()
-        #
-        # self.mainLayout.insertLayout(0, self.boardLayout)
         self.drawBoard()
 
         self.score = QLabel("SCORE: " + str(self.game.score))
-        # score.setStyleSheet("QLabel { color: rgb(0,0,0); font: 16pt; }")
+        self.score.setStyleSheet("QLabel { color: rgb(0,0,0); font: 16pt; }")
         self.score.setFixedHeight(50)
         self.mainLayout.insertWidget(1,self.score, 0, Qt.AlignRight)
         self.setStyleSheet("QGameBoard { background-color: rgb(187,173,160) }")
@@ -56,13 +50,17 @@ class QGameBoard(QWidget):
 
         e.accept()
 
+
     def drawBoard(self):
+        self.mainLayout.removeItem(self.boardLayout)
         self.boardLayout = QGridLayout()
         self.tiles = [[None for x in range(self.game.board.dimension)] for y in range(self.game.board.dimension)]
+
         for i in range(self.game.board.dimension):
             for j in range(self.game.board.dimension):
+                print("drawBoard ",i ,j)
+                # self.tiles[i][j] = None
                 self.tiles[i][j] = QTile(self.game.board.board[i][j])
                 self.boardLayout.addWidget(self.tiles[i][j], i, j)
                 self.tiles[i][j].draw()
-
         self.mainLayout.insertLayout(0, self.boardLayout)
