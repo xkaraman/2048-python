@@ -57,7 +57,7 @@ class Board:
         for i in range(self.dimension):
             for j in range(self.dimension):
                 if(self.board[i][j] != None):
-                    self.board[i][j].upgradtedThisMove = False
+                    self.board[i][j].upgradedThisMove = False
 
     def full(self):
         full = True

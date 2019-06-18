@@ -28,12 +28,13 @@ class QGameBoard(QWidget):
         #
         # self.mainLayout.insertLayout(0, self.boardLayout)
         self.drawBoard()
+
         self.score = QLabel("SCORE: " + str(self.game.score))
         # score.setStyleSheet("QLabel { color: rgb(0,0,0); font: 16pt; }")
         self.score.setFixedHeight(50)
         self.mainLayout.insertWidget(1,self.score, 0, Qt.AlignRight)
         self.setStyleSheet("QGameBoard { background-color: rgb(187,173,160) }")
-        # self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocusPolicy(Qt.StrongFocus)
 
     def keyPressEvent(self, e):
         # print( e.key() )

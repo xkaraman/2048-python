@@ -14,8 +14,8 @@ class Game:
     def move(self, direction):
         self.board.move(direction)
        #  update score
-        if (self.board.isTileCollisionLastRound()):
-            self.score += self.board.getPointsScoredLastRound();
+        if (self.board.tileCollisionLastRound == True):
+            self.score += self.board.pointsScoreLastRound;
 
          # if there is no more move possible, then it's game over
         if ( not self.board.movePossible()):
