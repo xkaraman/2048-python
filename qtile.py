@@ -5,16 +5,16 @@ from PyQt5.QtWidgets import QLabel,QGraphicsDropShadowEffect
 from tile import Tile
 
 class QTile(QLabel):
-        def __init__(self, tile = None):
+        def __init__(self, tile = Tile(0)):
             QLabel.__init__(self)
             self.setAlignment(Qt.AlignCenter)
+            # self.tile = tile
+            # if(self.tile != Tile(0):
             self.tile = tile
-            if(self.tile != None):
-                self.tile = tile
-                self.value = self.tile.value
+            self.value = self.tile.value
 
         def draw(self):
-            if(self.tile == None):
+            if(self.value == 0):
                 self.setText("")
                 self.setStyleSheet("QTile { background: rgb(204,192,179); border-radius: 10px; }")
             else:
